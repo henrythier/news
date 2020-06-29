@@ -25,7 +25,10 @@ def get_opener():
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2866.71 Safari/537.36'}
     response = requests.get(url, headers)
     soup = BeautifulSoup(response.text, features="html.parser")
-    opener_link = soup.findAll(class_="zon-teaser-classic__combined-link")[0]['href']
+    try:
+        opener_link = soup.find(class_="zon-teaser-classic__combined-link")['href']
+    except (IndexError, TypeError):
+        opener_link = soup.find(class_="zon-teaser-lead__combined-link")['href']
 
     # get keywords, headline, author
     response = requests.get(opener_link, headers)
