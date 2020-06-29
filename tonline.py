@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+name = 't-online'
+
 author_tag = '\'contentAuthor\': '
 ressort_tag = '\'pageCategoryLevel2\': '
 sub_ressort_tag = '\'pageCategoryLevel3\': '
@@ -45,5 +47,5 @@ def get_opener():
         sub_ressort = None
 
     # into object
-    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, 't-online')
+    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, name)
     return op

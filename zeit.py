@@ -3,6 +3,7 @@ from Opener import opener
 import requests
 import json
 
+name = 'Zeit'
 author_tag = '\'contentAuthor\': '
 ressort_tag = 'ressort\': '
 sub_ressort_tag = 'sub_ressort\': '
@@ -55,5 +56,5 @@ def get_opener():
     if len(sub_ressort) == 0:
         sub_ressort = None
 
-    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, 'Zeit')
+    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, name)
     return op

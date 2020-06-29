@@ -3,6 +3,8 @@ from Opener import opener
 import requests
 import json
 
+name = 'faz'
+
 def get_opener():
     url = 'https://www.faz.net/aktuell/'
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2866.71 Safari/537.36'}
@@ -37,5 +39,5 @@ def get_opener():
     ressort = data.get('page').get('ressort')
     sub_ressort = data.get('page').get('subressort1')
 
-    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, 'faz')
+    op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, name)
     return op
