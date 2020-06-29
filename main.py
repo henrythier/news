@@ -1,5 +1,6 @@
 import tonline
 import zeit
+import faz
 
 def hello_world():
     print('hello world')
@@ -11,7 +12,9 @@ def hello_world():
     schedule.run_pending()
     time.sleep(1)'''
 
-a = zeit.get_opener()
-print(a)
+outlets = [faz, tonline, zeit]
+
+for o in outlets:
+    print(o.get_opener())
 
 

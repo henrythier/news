@@ -41,6 +41,8 @@ def get_opener():
 
     # find subressort
     sub_ressort = find_tag(soup, sub_ressort_tag, 1)
+    if sub_ressort == headline:
+        sub_ressort = None
 
     # into object
     op = opener(headline, opener_link, authors, ressort, sub_ressort, keywords, 't-online')
