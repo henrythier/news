@@ -1,4 +1,5 @@
 import tonline
+import bild
 import zeit
 import faz
 import DB_writer
@@ -8,7 +9,6 @@ import datetime
 import sys
 
 outlets = [faz, tonline, zeit]
-counter = 0
 
 def get_openers():
     now = datetime.datetime.now()
@@ -23,10 +23,11 @@ def get_openers():
                                                               now,
                                                               o.name))
 
-schedule.every().hour.at(":00").do(get_openers)
+def schedule_openers():
+    schedule.every().hour.at(":00").do(get_openers)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
