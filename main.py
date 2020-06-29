@@ -8,7 +8,7 @@ import time
 import datetime
 import sys
 
-outlets = [faz, tonline, zeit]
+outlets = [bild, faz, tonline, zeit]
 
 def get_openers():
     now = datetime.datetime.now()
@@ -29,5 +29,11 @@ def schedule_openers():
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+def get_single_opener(outlet):
+    opener = vars(outlet.get_opener())
+    DB_writer.insert_opener(opener)
+
+schedule_openers()
 
 
