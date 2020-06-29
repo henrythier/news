@@ -46,7 +46,7 @@ def get_opener():
                 authors_temp = authors[0].get('name')
                 authors_temp = re.split(' und |, ', authors_temp)
             except KeyError:
-                authors_temp = 'Organisation'
+                authors_temp = ['Organisation']
 
             authors = authors_temp
             break
