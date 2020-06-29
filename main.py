@@ -14,8 +14,6 @@ def get_openers():
     now = datetime.datetime.now()
     print('RUN AT: {0}'.format(now))
     for o in outlets:
-        opener = vars(o.get_opener())
-        DB_writer.insert_opener(opener)
         try:
             opener = vars(o.get_opener())
             DB_writer.insert_opener(opener)
@@ -25,7 +23,7 @@ def get_openers():
                                                               now,
                                                               o.name))
 
-schedule.every().hour.do(get_openers)
+schedule.every().hour.at(":00").do(get_openers)
 
 while True:
     schedule.run_pending()
