@@ -42,7 +42,12 @@ def get_opener():
         if authors is None:
             continue
         else:
-            authors = [a.get('name') for a in authors]
+            try:
+                authors_temp = [a.get('name') for a in authors]
+            except AttributeError:
+                authors_temp = [authors.get('name')]
+
+            authors = authors_temp
             break
 
     ressort = find_tag(soup, ressort_tag, 1)

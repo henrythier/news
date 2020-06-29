@@ -1,20 +1,16 @@
 import tonline
 import zeit
 import faz
+import DB_writer
 
-def hello_world():
+def get_opners():
     print('hello world')
-
-
-#schedule.every(10).seconds.do(hello_world)
 
 '''while True:
     schedule.run_pending()
     time.sleep(1)'''
 
-outlets = [faz, tonline, zeit]
-
-for o in outlets:
-    print(o.get_opener())
+a = vars(zeit.get_opener())
+DB_writer.insert_opener(a)
 
 
