@@ -25,12 +25,10 @@ def get_openers():
                                                               now,
                                                               o.name))
 
-#schedule.every().hour.do(get_openers)
+schedule.every().hour.do(get_openers)
 
-while False:
+while True:
     schedule.run_pending()
     time.sleep(1)
-
-get_openers()
 
 
