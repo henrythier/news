@@ -2,6 +2,7 @@ import tonline
 import bild
 import zeit
 import faz
+import welt
 import sz
 import DB_writer
 import schedule
@@ -34,7 +35,4 @@ def schedule_openers():
 def get_single_opener(outlet):
     opener = vars(outlet.get_opener())
     DB_writer.insert_opener(opener)
-
-
-#schedule_openers()
 
