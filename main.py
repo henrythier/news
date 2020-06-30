@@ -34,6 +34,6 @@ def get_single_opener(outlet):
     opener = vars(outlet.get_opener())
     DB_writer.insert_opener(opener)
 
-schedule_openers()
 
+schedule_openers()
 
