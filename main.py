@@ -2,13 +2,14 @@ import tonline
 import bild
 import zeit
 import faz
+import sz
 import DB_writer
 import schedule
 import time
 import datetime
 import sys
 
-outlets = [bild, faz, tonline, zeit]
+outlets = [bild, faz, sz, tonline, zeit]
 
 def get_openers():
     now = datetime.datetime.now()
@@ -35,5 +36,5 @@ def get_single_opener(outlet):
     DB_writer.insert_opener(opener)
 
 
-schedule_openers()
+#schedule_openers()
 
