@@ -30,7 +30,7 @@ def get_opener():
     ressort = data[0].get('articleSection')
     sub_ressort = data[1].get("itemListElement")
 
-    sub_ressort = [a.get('item').get('name') for a in data[1].get("itemListElement")]
+    sub_ressort = [a.get('item').get('name') for a in sub_ressort]
     if len(sub_ressort) > 3:
         sub_ressort = sub_ressort[2]
     else:
