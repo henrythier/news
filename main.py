@@ -1,6 +1,7 @@
 import bild
 import faz
 import focus
+import handelsblatt
 import ntv
 import spon
 import sz
@@ -13,7 +14,7 @@ import time
 import datetime
 import sys
 
-outlets = [bild, faz, focus, ntv, spon, sz, tonline, welt, zeit]
+outlets = [bild, faz, focus, handelsblatt, ntv, spon, sz, tonline, welt, zeit]
 
 def get_openers():
     now = datetime.datetime.now()
