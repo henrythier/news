@@ -8,6 +8,7 @@ import sz
 import tonline
 import welt
 import zeit
+import twittertrends
 import DB_writer
 import schedule
 import time
@@ -25,21 +26,37 @@ def get_openers():
             DB_writer.insert_opener(opener)
         except:
             e = sys.exc_info()
-            err = {"Error": e[0],
+            err = {"Error": str(e[0]),
                    "Outlet": o.name,
                    "tmstmp": now}
-            DB_writer.insert_error(err)
             print(err)
+            DB_writer.insert_error(err)
 
-def schedule_openers():
+
+def get_twitter():
+    try:
+        twittertrends.get_trends()
+    except:
+        e = sys.exc_info()
+        err = {"Error": str(e[0]),
+               "Outlet": 'twitter',
+               "tmstmp": datetime.datetime.now()}
+        print(err)
+        DB_writer.insert_error(err)
+
+
+def schedule_queries():
     schedule.every().hour.at(":00").do(get_openers)
+    schedule.every().hour.at(":00").do(get_twitter)
 
     while True:
         schedule.run_pending()
         time.sleep(1)
 
+
 def get_single_opener(outlet):
     opener = vars(outlet.get_opener())
     DB_writer.insert_opener(opener)
 
-schedule_openers()
+
+schedule_queries()
