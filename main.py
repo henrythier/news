@@ -25,9 +25,11 @@ def get_openers():
             DB_writer.insert_opener(opener)
         except:
             e = sys.exc_info()
-            print('Error: {0},\nAt: {1},\nOutlet: {2}'.format(e[0],
-                                                              now,
-                                                              o.name))
+            err = {"Error": e[0],
+                   "Outlet": o.name,
+                   "tmstmp": now}
+            DB_writer.insert_error(err)
+            print(err)
 
 def schedule_openers():
     schedule.every().hour.at(":00").do(get_openers)
