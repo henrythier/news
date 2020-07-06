@@ -51,4 +51,5 @@ def get_single_opener(outlet):
     DB_writer.insert_opener(opener)
 
 
-schedule_queries()
+if __name__ == "__main__":
+    schedule_queries()
