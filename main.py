@@ -1,13 +1,4 @@
-import bild
-import faz
-import focus
-import handelsblatt
-import ntv
-import spon
-import sz
-import tonline
-import welt
-import zeit
+from outlets import bild, faz, focus, handelsblatt, ntv, spon, sz, tonline, welt, zeit
 import twittertrends
 import DB_writer
 import schedule
@@ -46,6 +37,7 @@ def get_twitter():
 
 
 def schedule_queries():
+    print('running')
     schedule.every().hour.at(":00").do(get_openers)
     schedule.every().hour.at(":00").do(get_twitter)
 
