@@ -51,6 +51,11 @@ def get_opener():
             authors = authors_temp
             break
 
+    if headline is None:
+        headline = soup.find("title").text
+        headline = headline.rsplit('-', 2)[0]
+        headline = headline.strip()
+
     ressort = find_tag(soup, ressort_tag, 1)
     sub_ressort = find_tag(soup, sub_ressort_tag, 1)
 

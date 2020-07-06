@@ -1,16 +1,20 @@
 from tweepy import OAuthHandler
 from tweepy import API
-from config import twitter_credentials
 import datetime
 import DB_writer
+import os
 
+api_key = os.environ['twitter_api_key']
+api_secret = os.environ['twitter_api_secret']
+access_token = os.environ['twitter_access_token']
+access_secret = os.environ['twitter_access_secret']
 
 def get_trends():
     # Consumer key authentication(consumer_key,consumer_secret can be collected from our twitter developer profile)
-    auth = OAuthHandler(twitter_credentials['api_key'], twitter_credentials['api_secret_key'])
+    auth = OAuthHandler(api_key, api_secret)
 
     # Access key authentication(access_token,access_token_secret can be collected from our twitter developer profile)
-    auth.set_access_token(twitter_credentials['access_token'], twitter_credentials['access_token_secret'])
+    auth.set_access_token(access_token, access_secret)
 
     # Set up the API with the authentication handler
     api = API(auth)

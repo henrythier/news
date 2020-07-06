@@ -1,9 +1,8 @@
-import config
 import pymongo
-from pprint import pprint
+import os
 
-user = config.mongo_db_credentials['user']
-password = config.mongo_db_credentials['password']
+user = os.environ['mongo_user']
+password = os.environ['mongo_pw']
 mongodb_url = "mongodb+srv://scraper-writer:{0}@news-hgakq.mongodb.net/news?retryWrites=true&w=majority"\
     .format(password)
 
@@ -21,9 +20,3 @@ def insert_error(error_message):
 
 def insert_trends(trend):
     trend_collection.insert_one(trend)
-
-'''
-url = 'mongodb+srv://scraper-writer:{0}@news-hgakq.mongodb.net/<dbname>?retryWrites=true&w=majority'
-client = pymongo.MongoClient("mongodb+srv://scraper-writer:<password>@news-hgakq.mongodb.net/<dbname>?retryWrites=true&w=majority")
-db = client.test
-'''
