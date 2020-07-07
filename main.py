@@ -9,19 +9,24 @@ import sys
 outlets = [bild, faz, focus, handelsblatt, ntv, spon, sz, tonline, welt, zeit]
 
 def get_openers():
-    now = datetime.datetime.now()
-    print('RUN AT: {0}'.format(now))
+    errors = 0
+    start = datetime.datetime.now()
+    print('Run started at: {}'.format(start))
     for o in outlets:
         try:
             opener = vars(o.get_opener())
             DB_writer.insert_opener(opener)
         except:
+            errors += 1
             e = sys.exc_info()
             err = {"Error": str(e[0]),
                    "Outlet": o.name,
-                   "tmstmp": now}
+                   "tmstmp": start}
             print(err)
             DB_writer.insert_error(err)
+    end = datetime.datetime.now()
+    print('Errors encountered: {}'.format(errors))
+    print('Run completed at: {}'.format(end))
 
 
 def get_twitter():
