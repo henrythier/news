@@ -41,7 +41,7 @@ def find_first_a(soup):
 
 
 def get_opener():
-    flist = [find_by_bold_text, find_by_article, find_by_h2_tag, find_first_a]
+    flist = [find_by_article, find_by_bold_text, find_by_h2_tag, find_first_a]
     url = 'https://www.spiegel.de/'
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2866.71 Safari/537.36'}
     response = requests.get(url, headers)
