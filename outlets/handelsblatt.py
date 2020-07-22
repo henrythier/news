@@ -27,6 +27,9 @@ def get_opener():
     keywords = soup.find("meta", {"name":"keywords"})['content'].split(',')
     authors = [a['content'] for a in soup.find_all("meta", {"name":"vr:author"})]
 
+    if len(authors) == 0:
+        authors = authors[0].split(',')
+
     # find ressorts
     ressort = find_tag(ressort_tag, response)
     sub_ressort = find_tag(sub_ressort_tag, response)
